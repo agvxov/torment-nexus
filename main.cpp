@@ -867,7 +867,7 @@ signed main(void) {
         } while (0);
 
         player->is_parrying  = IsKeyDown(KEY_SPACE);
-        player->is_sprinting = IsKeyDown(KEY_LEFT_SHIFT) | IsKeyDown(KEY_RIGHT_SHIFT);
+        player->is_sprinting = IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT);
         
         // Update
         for (auto && e : entities) {
