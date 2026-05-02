@@ -838,10 +838,10 @@ signed main(void) {
             float dx = 0.0f;
             float dy = 0.0f;
 
-            if (IsKeyDown(KEY_W)) { dy -= 1.0f; }
-            if (IsKeyDown(KEY_S)) { dy += 1.0f; }
-            if (IsKeyDown(KEY_A)) { dx -= 1.0f; }
-            if (IsKeyDown(KEY_D)) { dx += 1.0f; }
+            if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) { dy -= 1.0f; }
+            if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) { dy += 1.0f; }
+            if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) { dx -= 1.0f; }
+            if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) { dx += 1.0f; }
 
             float len = sqrtf(dx * dx + dy * dy);
             if (len > 0.0f) {
@@ -867,7 +867,7 @@ signed main(void) {
         } while (0);
 
         player->is_parrying  = IsKeyDown(KEY_SPACE);
-        player->is_sprinting = IsKeyDown(KEY_LEFT_SHIFT);
+        player->is_sprinting = IsKeyDown(KEY_LEFT_SHIFT) | IsKeyDown(KEY_RIGHT_SHIFT);
         
         // Update
         for (auto && e : entities) {
